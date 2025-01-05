@@ -9,7 +9,7 @@ def canUnlockAll(boxes):
     Determines if all boxes can be unlocked.
 
     Parameters:
-        boxes (list of lists): A list where each sublist contains keys for other boxes.
+        boxes (list of lists): A list where sublists contain keys for box.
 
     Returns:
         bool: True if all boxes can be unlocked, False otherwise.
@@ -20,7 +20,7 @@ def canUnlockAll(boxes):
 
     while keys:
         key = keys.pop()  # Get a key from the set
-        if key not in unlocked and 0 <= key < n:  # Valid key not already unlocked
+        if key not in unlocked and 0 <= key < n:  # Valid key not unlocked
             unlocked.add(key)  # Mark box as unlocked
             keys.update(boxes[key])  # Add new keys from this box
 
