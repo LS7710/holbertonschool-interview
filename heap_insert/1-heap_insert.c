@@ -75,7 +75,7 @@ size_t binary_tree_size(const binary_tree_t *tree)
  *
  * Return: Pointer to the parent node
  */
-heap_t *find_parent(heap_t *root, size_t size)
+binary_tree_t *find_parent(binary_tree_t *root, size_t size)
 {
     if (size == 1)
         return (root);
