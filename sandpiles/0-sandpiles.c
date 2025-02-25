@@ -2,10 +2,10 @@
 #include "sandpiles.h"
 
 /**
- * print_grid - Prints a 3x3 grid
+ * print_grid - Prints a 3x3 grid (internal use only)
  * @grid: 3x3 grid to be printed
  */
-static void print_grid(int grid[3][3])  // Changed to static
+static void print_grid(int grid[3][3])  // Remains static
 {
     int i, j;
 
@@ -20,6 +20,15 @@ static void print_grid(int grid[3][3])  // Changed to static
         }
         printf("\n");
     }
+}
+
+/**
+ * print_grid_public - Public wrapper for print_grid
+ * @grid: 3x3 grid to be printed
+ */
+void print_grid_public(int grid[3][3])  // New wrapper function
+{
+    print_grid(grid);
 }
 
 /**

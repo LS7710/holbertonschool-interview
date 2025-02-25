@@ -56,7 +56,7 @@ int main(void)
     sandpiles_sum(grid1, grid2);
 
     printf("=\n");
-    print_grid(grid1);
+    print_grid_public(grid1); // Use the public wrapper
 
     return (EXIT_SUCCESS);
 }
