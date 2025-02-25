@@ -5,30 +5,30 @@
  * print_grid - Prints a 3x3 grid (internal use only)
  * @grid: 3x3 grid to be printed
  */
-static void print_grid(int grid[3][3])  // Remains static
+static void print_grid(int grid[3][3])
 {
-    int i, j;
+	int i, j;
 
-    printf("=\n");
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            if (j)
-                printf(" ");
-            printf("%d", grid[i][j]);
-        }
-        printf("\n");
-    }
+	printf("=\n");
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			if (j)
+				printf(" ");
+			printf("%d", grid[i][j]);
+		}
+		printf("\n");
+	}
 }
 
 /**
  * print_grid_public - Public wrapper for print_grid
  * @grid: 3x3 grid to be printed
  */
-void print_grid_public(int grid[3][3])  // New wrapper function
+void print_grid_public(int grid[3][3])
 {
-    print_grid(grid);
+	print_grid(grid);
 }
 
 /**
@@ -38,17 +38,17 @@ void print_grid_public(int grid[3][3])  // New wrapper function
  */
 int is_stable(int grid[3][3])
 {
-    int i, j;
+	int i, j;
 
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            if (grid[i][j] > 3)
-                return (0);
-        }
-    }
-    return (1);
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			if (grid[i][j] > 3)
+				return (0);
+		}
+	}
+	return (1);
 }
 
 /**
@@ -57,31 +57,35 @@ int is_stable(int grid[3][3])
  */
 void topple(int grid[3][3])
 {
-    int i, j;
-    int temp[3][3] = {0};
+	int i, j;
+	int temp[3][3] = {0};
 
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            if (grid[i][j] > 3)
-            {
-                temp[i][j] -= 4;
-                if (i > 0) temp[i - 1][j] += 1; // Top
-                if (i < 2) temp[i + 1][j] += 1; // Bottom
-                if (j > 0) temp[i][j - 1] += 1; // Left
-                if (j < 2) temp[i][j + 1] += 1; // Right
-            }
-        }
-    }
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			if (grid[i][j] > 3)
+			{
+				temp[i][j] -= 4;
+				if (i > 0)
+					temp[i - 1][j] += 1;
+				if (i < 2)
+					temp[i + 1][j] += 1;
+				if (j > 0)
+					temp[i][j - 1] += 1;
+				if (j < 2)
+					temp[i][j + 1] += 1;
+			}
+		}
+	}
 
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            grid[i][j] += temp[i][j];
-        }
-    }
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			grid[i][j] += temp[i][j];
+		}
+	}
 }
 
 /**
@@ -91,21 +95,21 @@ void topple(int grid[3][3])
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-    int i, j;
+	int i, j;
 
-    /* Step 1: Sum grid1 and grid2 */
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            grid1[i][j] += grid2[i][j];
-        }
-    }
+	/* Step 1: Sum grid1 and grid2 */
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			grid1[i][j] += grid2[i][j];
+		}
+	}
 
-    /* Step 2 & 3: Check stability and topple */
-    while (!is_stable(grid1))
-    {
-        print_grid(grid1);
-        topple(grid1);
-    }
+	/* Step 2 & 3: Check stability and topple */
+	while (!is_stable(grid1))
+	{
+		print_grid(grid1);
+		topple(grid1);
+	}
 }
