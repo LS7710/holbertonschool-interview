@@ -5,7 +5,7 @@
  * print_grid - Prints a 3x3 grid
  * @grid: 3x3 grid to be printed
  */
-void print_grid(int grid[3][3])
+static void print_grid(int grid[3][3])  // Changed to static
 {
     int i, j;
 
