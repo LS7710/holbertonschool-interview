@@ -5,6 +5,7 @@
  * print_grid - Prints a 3x3 grid (internal use only)
  * @grid: 3x3 grid to be printed
  */
+
 static void print_grid(int grid[3][3])
 {
 	int i, j;
