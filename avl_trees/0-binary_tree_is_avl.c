@@ -1,4 +1,3 @@
-/* 0-binary_tree_is_avl.c */
 #include "binary_trees.h"
 #include <limits.h>
 
@@ -9,13 +8,13 @@
  */
 static size_t tree_height(const binary_tree_t *tree)
 {
-    size_t left_h = 0, right_h = 0;
+	size_t left_h = 0, right_h = 0;
 
-    if (!tree)
-        return (0);
-    left_h = tree_height(tree->left);
-    right_h = tree_height(tree->right);
-    return ((left_h > right_h ? left_h : right_h) + 1);
+	if (!tree)
+		return (0);
+	left_h = tree_height(tree->left);
+	right_h = tree_height(tree->right);
+	return ((left_h > right_h ? left_h : right_h) + 1);
 }
 
 /**
@@ -28,12 +27,12 @@ static size_t tree_height(const binary_tree_t *tree)
  */
 static int is_bst_util(const binary_tree_t *tree, long min, long max)
 {
-    if (!tree)
-        return (1);
-    if (tree->n <= min || tree->n >= max)
-        return (0);
-    return (is_bst_util(tree->left, min, tree->n) &&
-            is_bst_util(tree->right, tree->n, max));
+	if (!tree)
+		return (1);
+	if (tree->n <= min || tree->n >= max)
+		return (0);
+	return (is_bst_util(tree->left, min, tree->n) &&
+		is_bst_util(tree->right, tree->n, max));
 }
 
 /**
@@ -43,15 +42,15 @@ static int is_bst_util(const binary_tree_t *tree, long min, long max)
  */
 static int check_avl(const binary_tree_t *tree)
 {
-    int balance;
+	int balance;
 
-    if (!tree)
-        return (1);
-    balance = (int)tree_height(tree->left)
-            - (int)tree_height(tree->right);
-    if (balance > 1 || balance < -1)
-        return (0);
-    return (check_avl(tree->left) && check_avl(tree->right));
+	if (!tree)
+		return (1);
+	balance = (int)tree_height(tree->left) -
+		(int)tree_height(tree->right);
+	if (balance > 1 || balance < -1)
+		return (0);
+	return (check_avl(tree->left) && check_avl(tree->right));
 }
 
 /**
@@ -61,11 +60,11 @@ static int check_avl(const binary_tree_t *tree)
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-    if (!tree)
-        return (0);
-    if (!is_bst_util(tree, LONG_MIN, LONG_MAX))
-        return (0);
-    if (!check_avl(tree))
-        return (0);
-    return (1);
+	if (!tree)
+		return (0);
+	if (!is_bst_util(tree, LONG_MIN, LONG_MAX))
+		return (0);
+	if (!check_avl(tree))
+		return (0);
+	return (1);
 }
