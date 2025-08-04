@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """Pascal's Triangle generator module"""
 
+
 def pascal_triangle(n):
 
-
-    """Returns list of lists of integers"""
-
+"""Returns list of lists of integers"""
 
     if n <= 0:
         return []
