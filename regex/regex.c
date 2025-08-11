@@ -1,22 +1,6 @@
 #include "regex.h"
 
-/**
- * match_here - recursive engine that matches from current positions
- * @s: current position in input string
- * @p: current position in pattern
- *
- * Return: 1 if the suffixes match, otherwise 0
- */
 static int match_here(const char *s, const char *p);
-
-/**
- * match_star - handle "c*" where c is a literal or '.'
- * @c: the element repeated by '*'
- * @p: pattern position after the "c*"
- * @s: current position in input string
- *
- * Return: 1 if a match is possible, otherwise 0
- */
 static int match_star(char c, const char *p, const char *s);
 
 /**
@@ -35,6 +19,13 @@ int regex_match(char const *str, char const *pattern)
 	return (match_here(str, pattern));
 }
 
+/**
+ * match_here - recursive engine that matches from current positions
+ * @s: current position in input string
+ * @p: current position in pattern
+ *
+ * Return: 1 if the suffixes match, otherwise 0
+ */
 static int match_here(const char *s, const char *p)
 {
 	/* pattern exhausted: match only if string also exhausted */
@@ -52,6 +43,14 @@ static int match_here(const char *s, const char *p)
 	return (0);
 }
 
+/**
+ * match_star - handle "c*" where c is a literal or '.'
+ * @c: the element repeated by '*'
+ * @p: pattern position after the "c*"
+ * @s: current position in input string
+ *
+ * Return: 1 if a match is possible, otherwise 0
+ */
 static int match_star(char c, const char *p, const char *s)
 {
 	/*
@@ -61,10 +60,8 @@ static int match_star(char c, const char *p, const char *s)
 	do {
 		if (match_here(s, p))
 			return (1);
-		/* stop if string ended */
 		if (*s == '\0')
 			break;
-		/* advance if next char fits 'c' (or '.' wildcard) */
 		if (c == '.' || *s == c)
 			s++;
 		else
