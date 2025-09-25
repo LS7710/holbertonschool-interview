@@ -9,7 +9,10 @@ A character can be 1–4 bytes:
 - 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 """
 
+
 def validUTF8(data):
+
+
     """
     Determine if a list of integers encodes valid UTF-8.
 
@@ -37,8 +40,7 @@ def validUTF8(data):
                 cnt += 1
                 mask >>= 1
 
-            # UTF-8 multi-byte headers are 110xxxxx (2), 1110xxxx (3), 11110xxx (4)
-            # cnt == 1 is invalid (10xxxxxx cannot start a char)
+            # cnt == 1 is invalid
             if cnt == 1 or cnt > 4:
                 return False
 
