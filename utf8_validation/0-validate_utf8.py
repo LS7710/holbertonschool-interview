@@ -11,8 +11,6 @@ A character can be 1–4 bytes:
 
 
 def validUTF8(data):
-
-
     """
     Determine if a list of integers encodes valid UTF-8.
 
