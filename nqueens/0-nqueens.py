@@ -10,7 +10,7 @@ import sys
 
 
 def solve_nqueens(n):
-    """Return a list of all solutions; each solution is a list of [row, col]."""
+    """Return a list of all solutions"""
     solutions = []
     cols = set()      # occupied columns
     diag1 = set()     # r - c (main diagonals)
