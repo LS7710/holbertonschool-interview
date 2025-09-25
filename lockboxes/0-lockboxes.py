@@ -7,7 +7,7 @@ Lockboxes Problem: Determine if all boxes can be unlocked.
 def canUnlockAll(boxes):
     """
     Determines if all boxes can be unlocked.
-
+ 
     Parameters:
         boxes (list of lists): A list where sublists contain keys for box.
 
